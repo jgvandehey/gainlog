@@ -1,4 +1,14 @@
 Gainlog::Application.routes.draw do
+  resources :goals
+
+  root :to => 'pages#home'
+
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
+  get 'home' => 'pages#home'
+  get 'about' => 'pages#about'
+  get 'index' => 'pages#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
